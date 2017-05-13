@@ -330,4 +330,4 @@ Swiper.defaultProps = {
   outputOpacityRangeY: [0.8, 1, 1, 1, 0.8]
 }
 
-export module Swiper
+export default Swiper;
