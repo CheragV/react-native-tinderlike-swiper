@@ -10,15 +10,27 @@ import {
   StyleSheet,
   Text,
   View
-} from 'react-native'
-import {  Main } from './Main'
+} from 'react-native';
+import Swiper from './Swiper'
 
+class Main extends Component {
 
-export default class Example extends Component {
   render() {
+      console.log(Swiper)
     return (
-      <Main />
-    )
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.ios.js
+        </Text>
+        <Text style={styles.instructions}>
+          Press Cmd+R to reload,{'\n'}
+          Cmd+D or shake for dev menu
+        </Text>
+      </View>
+    );
   }
 }
 
@@ -41,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Example', () => Example);
+export { Main }
