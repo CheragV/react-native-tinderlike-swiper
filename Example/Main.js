@@ -1,56 +1,85 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from "react";
+import Swiper from "./Swiper";
+import { StyleSheet, View, Text, Image, Button } from "react-native";
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import Swiper from './Swiper'
+ class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: ["1", "2", "3"],
+      swipedAllCards: false,
+      swipeDirection: "",
+      isSwipingBack: false,
+      cardIndex: 0
+    };
+  }
 
-class Main extends Component {
+  renderCard = card => {
+    return (
+      <View style={styles.card}>
+        <Text style={styles.text}>{card}</Text>
+      </View>
+    );
+  };
+
+  onSwipedAllCards = () => {
+    this.setState({
+      swipedAllCards: true
+    })
+  } 
 
   render() {
-      console.log(Swiper)
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Swiper
+          ref={swiper => {
+            this.swiper = swiper;
+          }}
+          onSwiped={this.onSwiped}
+          cards={this.state.cards}
+          cardIndex={this.state.cardIndex}
+          cardVerticalMargin={80}
+          renderCard={this.renderCard}
+          onSwipedAll={this.onSwipedAllCards}
+          onSwipeLeft={{}}
+          onSwipeRight={{}}
+          //horizontalThreshold={{}}
+          //secondCardZoom
+          onSwipedAll={console.log('All cards swiped')}
+        >
+        </Swiper>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  box1: {
+    flex: 1
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: "#F5FCFF"
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  card: {
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: "#E8E8E8",
+    justifyContent: "center",
+    backgroundColor: "white"
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  text: {
+    textAlign: "center",
+    fontSize: 50,
+    backgroundColor: "transparent"
   },
+  done: {
+    textAlign: "center",
+    fontSize: 30,
+    color: "white",
+    backgroundColor: "transparent"
+  }
 });
 
 export { Main }
