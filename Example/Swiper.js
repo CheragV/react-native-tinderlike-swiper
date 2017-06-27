@@ -18,9 +18,15 @@ class Swiper extends React.Component {
       scale: new Animated.Value(props.secondCardZoom),
       currentCard: props.cardIndex,
       nextCard: (props.cardIndex >= props.cards.length - 1) ? 0 : props.cardIndex + 1,
-      cards: props.cards,
+      cards: this.props.cards,
       swipedAllCards: false
     }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      cards: nextProps.cards
+    })
   }
 
   componentWillMount() {
