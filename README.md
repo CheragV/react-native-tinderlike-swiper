@@ -1,1 +1,11 @@
-This is a work under progress. You can follow it for regular updates :)
+## Installation
+```
+
+You can directly use the class Swiper in your project. 
+
+PS: dont forget to star the project if you like it.
+
+```
+## Preview
+
+![App preview](/appGif.gif)
